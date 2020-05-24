@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RayCarrot.IO", "RayCarrot.IO\RayCarrot.IO.csproj", "{FF5ADD45-3BDA-4FD8-A87A-DC859C7742CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{5681E1B1-7BE8-4B02-A814-A4C6A78BE7F1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RayCarrot.Common", "..\RayCarrot.Common\RayCarrot.Common\RayCarrot.Common.csproj", "{6A21A303-63EF-4593-B1E7-7C7ECEAFB396}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RayCarrot.Logging", "..\RayCarrot.Logging\RayCarrot.Logging\RayCarrot.Logging.csproj", "{3BCC4DA3-52B2-4F16-A32F-349F1E7B3F02}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF5ADD45-3BDA-4FD8-A87A-DC859C7742CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF5ADD45-3BDA-4FD8-A87A-DC859C7742CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF5ADD45-3BDA-4FD8-A87A-DC859C7742CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF5ADD45-3BDA-4FD8-A87A-DC859C7742CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A21A303-63EF-4593-B1E7-7C7ECEAFB396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A21A303-63EF-4593-B1E7-7C7ECEAFB396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A21A303-63EF-4593-B1E7-7C7ECEAFB396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A21A303-63EF-4593-B1E7-7C7ECEAFB396}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BCC4DA3-52B2-4F16-A32F-349F1E7B3F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BCC4DA3-52B2-4F16-A32F-349F1E7B3F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BCC4DA3-52B2-4F16-A32F-349F1E7B3F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BCC4DA3-52B2-4F16-A32F-349F1E7B3F02}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6A21A303-63EF-4593-B1E7-7C7ECEAFB396} = {5681E1B1-7BE8-4B02-A814-A4C6A78BE7F1}
+		{3BCC4DA3-52B2-4F16-A32F-349F1E7B3F02} = {5681E1B1-7BE8-4B02-A814-A4C6A78BE7F1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7C69D3B8-0E99-417B-8D93-1B66D84106F2}
+	EndGlobalSection
+EndGlobal
