@@ -10,7 +10,7 @@ namespace RayCarrot.IO
     public sealed class TempFile : TempFileSystemEntry
     {
         /// <summary>
-        /// Creates a new temporary file
+        /// Creates a new temporary file with a default name
         /// </summary>
         /// <param name="createFile">Indicates if the temporary file should be created</param>
         public TempFile(bool createFile)
@@ -28,18 +28,21 @@ namespace RayCarrot.IO
             }
             else
             {
-                // Get the temp path
-                FileSystemPath tempFile;
-
-                // Get a random temp path until one does not exist
-                do
-                {
-                    tempFile = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName() + ".tmp");
-                } while (tempFile.DirectoryExists);
-
                 // Set the temp path
-                TempPath = tempFile;
+                TempPath = GetTempFilePath(new FileExtension(".tmp"));
             }
+
+            RL.Logger?.LogDebugSource($"A new temp file has been created under {TempPath}");
+        }
+
+        /// <summary>
+        /// Creates a new temporary file with a custom file extension without creating the file
+        /// </summary>
+        /// <param name="ext">The file extension</param>
+        public TempFile(FileExtension ext)
+        {
+            // Set the temp path
+            TempPath = GetTempFilePath(ext ?? new FileExtension(".tmp"));
 
             RL.Logger?.LogDebugSource($"A new temp file has been created under {TempPath}");
         }
@@ -48,6 +51,20 @@ namespace RayCarrot.IO
         /// The path of the temporary file
         /// </summary>
         public override FileSystemPath TempPath { get; }
+
+        private static FileSystemPath GetTempFilePath(FileExtension ext)
+        {
+            // Get the temp path
+            FileSystemPath tempFile;
+
+            // Get a random temp path until one does not exist
+            do
+            {
+                tempFile = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName() + ext.FileExtensions);
+            } while (tempFile.FileExists);
+
+            return tempFile;
+        }
 
         /// <summary>
         /// Removes the temporary file
