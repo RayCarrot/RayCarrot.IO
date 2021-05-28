@@ -70,7 +70,7 @@ namespace RayCarrot.IO
         /// <exception cref="T:System.ArgumentNullException">The type of <paramref name="obj">obj</paramref> is a reference type and <paramref name="obj">obj</paramref> is null.</exception>
         public int GetHashCode(FileFilterItem obj)
         {
-            return StringRepresentation.GetHashCode();
+            return obj.StringRepresentation.GetHashCode();
         }
 
         /// <summary>
