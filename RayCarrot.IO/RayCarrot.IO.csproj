@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RayCarrot.Common\RayCarrot.Common\RayCarrot.Common.csproj" />
     <ProjectReference Include="..\..\RayCarrot.Logging\RayCarrot.Logging\RayCarrot.Logging.csproj" />
   </ItemGroup>
 

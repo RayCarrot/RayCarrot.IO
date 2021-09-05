@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using RayCarrot.Common;
 
 namespace RayCarrot.IO
 {
@@ -48,7 +47,7 @@ namespace RayCarrot.IO
         /// <summary>
         /// All file extensions, combined into one
         /// </summary>
-        public string FileExtensions => AllFileExtensions.JoinItems(String.Empty);
+        public string FileExtensions => String.Join(String.Empty, AllFileExtensions);
 
         /// <summary>
         /// The primary file extension

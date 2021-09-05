@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using RayCarrot.Common;
 
 namespace RayCarrot.IO
 {
@@ -39,7 +38,7 @@ namespace RayCarrot.IO
         /// <returns>The filter containing all filters in the collection</returns>
         public FileFilterItem CombineAll(string description)
         {
-            return new FileFilterItem(this.Select(x => x.Filter).JoinItems(";"), description);
+            return new FileFilterItem(String.Join(";", this.Select(x => x.Filter)), description);
         }
 
         /// <summary>
@@ -118,7 +117,7 @@ namespace RayCarrot.IO
             if (Count < 1)
                 return String.Empty;
             else
-                return this.JoinItems("|");
+                return String.Join("|", this);
         }
 
         #endregion
