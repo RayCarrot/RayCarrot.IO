@@ -1,10 +1,10 @@
-﻿using RayCarrot.Logging;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
+using NLog;
 
 namespace RayCarrot.IO
 {
@@ -56,6 +56,12 @@ namespace RayCarrot.IO
             _fullPath = info.GetValue<string>(nameof(FullPath));
             IsRelative = info.GetValue<bool>(nameof(IsRelative));
         }
+
+        #endregion
+
+        #region Logger
+
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         #endregion
 
@@ -189,7 +195,7 @@ namespace RayCarrot.IO
             }
             catch (Exception ex)
             {
-                ex.HandleUnexpected("Getting parent directory", fullPath);
+                Logger.Warn(ex, "Getting parent directory for {0}", fullPath);
                 return String.Empty;
             }
         }
@@ -207,7 +213,7 @@ namespace RayCarrot.IO
             }
             catch (ArgumentException ex)
             {
-                ex.HandleUnexpected("Getting file name", path);
+                Logger.Warn(ex, "Getting file name for {0}", path);
                 return String.Empty;
             }
         }
@@ -228,7 +234,7 @@ namespace RayCarrot.IO
             }
             catch (Exception ex)
             {
-                ex.HandleUnexpected("Getting directory info for root checking", path);
+                Logger.Warn(ex, "Getting directory info for root checking for {0}", path);
                 return false;
             }
         }
@@ -250,21 +256,21 @@ namespace RayCarrot.IO
             }
             catch (ArgumentNullException ex)
             {
-                ex.HandleUnexpected("Getting absolute path", path);
+                Logger.Warn(ex, "Getting absolute path for {0}", path);
 
                 // The path is null
                 return path;
             }
             catch (ArgumentException ex)
             {
-                ex.HandleUnexpected("Getting absolute path", path);
+                Logger.Warn(ex, "Getting absolute path for {0}", path);
 
                 // The path contains an invalid character
                 return path;
             }
             catch (NotSupportedException ex)
             {
-                ex.HandleUnexpected("Getting absolute path", path);
+                Logger.Warn(ex, "Getting absolute path for {0}", path);
 
                 // The path contains an extra colon
                 return path;

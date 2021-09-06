@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
-using RayCarrot.Logging;
 
 namespace RayCarrot.IO
 {
@@ -49,8 +48,6 @@ namespace RayCarrot.IO
         /// <exception cref="NotSupportedException">The conversion cannot be performed</exception>
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
-            RL.Logger?.LogDebugSource($"Converting {value} to a file system path");
-
             if (value is string stringValue)
                 return new FileSystemPath(stringValue);
             else if (value is FileSystemInfo fileSystemInfoValue)

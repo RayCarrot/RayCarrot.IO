@@ -1,6 +1,6 @@
-﻿using RayCarrot.Logging;
-using System;
+﻿using System;
 using System.IO;
+using NLog;
 
 namespace RayCarrot.IO
 {
@@ -31,8 +31,10 @@ namespace RayCarrot.IO
                 // Create the directory
                 Directory.CreateDirectory(TempPath);
 
-            RL.Logger?.LogDebugSource($"A new temp directory has been created under {TempPath}");
+            Logger.Debug("A new temp directory has been created under {0}", TempPath);
         }
+
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// The path of the temporary directory
@@ -51,7 +53,7 @@ namespace RayCarrot.IO
             }
             catch (Exception ex)
             {
-                ex.HandleError("Deleting temp directory");
+                Logger.Error(ex, "Deleting temp directory");
             }
         }
     }

@@ -10,10 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="ByteSize" Version="2.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\RayCarrot.Logging\RayCarrot.Logging\RayCarrot.Logging.csproj" />
+    <PackageReference Include="NLog" Version="4.7.11" />
   </ItemGroup>
 
 </Project>

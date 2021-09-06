@@ -1,6 +1,6 @@
-﻿using RayCarrot.Logging;
-using System;
+﻿using System;
 using System.IO;
+using NLog;
 
 namespace RayCarrot.IO
 {
@@ -32,7 +32,7 @@ namespace RayCarrot.IO
                 TempPath = GetTempFilePath(new FileExtension(".tmp"));
             }
 
-            RL.Logger?.LogDebugSource($"A new temp file has been created under {TempPath}");
+            Logger.Debug("A new temp file has been created under {0}", TempPath);
         }
 
         /// <summary>
@@ -44,8 +44,10 @@ namespace RayCarrot.IO
             // Set the temp path
             TempPath = GetTempFilePath(ext ?? new FileExtension(".tmp"));
 
-            RL.Logger?.LogDebugSource($"A new temp file has been created under {TempPath}");
+            Logger.Debug("A new temp file has been created under {0}", TempPath);
         }
+
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// The path of the temporary file
@@ -78,7 +80,7 @@ namespace RayCarrot.IO
             }
             catch (Exception ex)
             {
-                ex.HandleError("Deleting temp file");
+                Logger.Error(ex, "Deleting temp file");
             }
         }
     }

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
-using RayCarrot.Logging;
 
 namespace RayCarrot.IO
 {
@@ -116,7 +115,6 @@ namespace RayCarrot.IO
             }
             catch (Exception ex)
             {
-                ex.HandleError("Removing root from path");
                 throw new IOException("The path is not an absolute, rooted path", ex);
             }
         }
@@ -160,20 +158,14 @@ namespace RayCarrot.IO
         /// <returns>The file path without the extension, or the file path if no extension was found</returns>
         public static FileSystemPath RemoveFileExtension(this FileSystemPath fileSystemPath, bool includeMultipleExtensions = false)
         {
-            try
-            {
-                if (!fileSystemPath.FileExtension.AllFileExtensions.Any())
-                    return fileSystemPath;
-
-                var fileExtSize = includeMultipleExtensions ? fileSystemPath.FileExtension.FileExtensions.Length : fileSystemPath.FileExtension.PrimaryFileExtension.Length;
-
-                return fileSystemPath.FullPath.Substring(0, fileSystemPath.FullPath.Length - fileExtSize);
-            }
-            catch (Exception ex)
-            {
-                ex.HandleUnexpected("Removing file extension");
+            if (!fileSystemPath.FileExtension.AllFileExtensions.Any())
                 return fileSystemPath;
-            }
+
+            var fileExtSize = includeMultipleExtensions
+                ? fileSystemPath.FileExtension.FileExtensions.Length
+                : fileSystemPath.FileExtension.PrimaryFileExtension.Length;
+
+            return fileSystemPath.FullPath.Substring(0, fileSystemPath.FullPath.Length - fileExtSize);
         }
 
         /// <summary>
@@ -302,8 +294,6 @@ namespace RayCarrot.IO
 
             // Delete the file
             File.Delete(filePath);
-
-            RL.Logger?.LogDebugSource($"The file {filePath} was deleted");
         }
 
         /// <summary>
@@ -318,8 +308,6 @@ namespace RayCarrot.IO
 
             // Delete the directory
             Directory.Delete(dirPath, true);
-
-            RL.Logger?.LogDebugSource($"The directory {dirPath} was deleted");
         }
     }
 }
