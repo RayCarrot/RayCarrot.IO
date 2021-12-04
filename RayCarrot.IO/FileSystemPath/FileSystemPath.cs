@@ -170,8 +170,8 @@ namespace RayCarrot.IO
 
             // TODO: Allow this to be configured
             // Correct the path casing if set to do so
-            if (false)
-                path = CorrectPathCasing(path);
+            //if (false)
+            //    path = CorrectPathCasing(path);
 
             // Return the path
             return path;
