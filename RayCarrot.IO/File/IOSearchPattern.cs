@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 
 namespace RayCarrot.IO
 {
@@ -51,5 +52,7 @@ namespace RayCarrot.IO
         /// </summary>
         /// <returns>True if the current instance should include the entire directory and its sub content, otherwise false</returns>
         public bool IsEntireDir() => (SearchPattern == null || SearchPattern == "*") && SearchOption == SearchOption.AllDirectories;
+
+        public string[] GetFiles() => Directory.GetFiles(DirPath, SearchPattern, SearchOption);
     }
 }
